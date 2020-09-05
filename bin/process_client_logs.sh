@@ -1,17 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-#Takes a directory as an argument
+DIR="$1"
+#####PSUDO CODE#######
+#CREATE FILE failed_login_data.txt
+#writes to that file the contents of the file passed into several organized columns while also putting them into
+# failed login date.txt
+#then yeet out of here
 
-tar -xf "$1"
-
-cd var/log || exit
-
-cat * | awk '{printf "invalid user"} ; '
-
-#This regex needs to take in alot more things, I'm not 100% on the printf but it was nice for testing
-
-
-
-
-
-
+cd "$DIR" || exit
