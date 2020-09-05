@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
+# A script to format files
 
+##Constant##
 DIR="$1"
-#####PSUDO CODE#######
-#CREATE FILE failed_login_data.txt
-#writes to that file the contents of the file passed into several organized columns while also putting them into
-# failed login date.txt
-#then yeet out of here
 
+##MAIN##
+#Merging all of the files together
 cd "$DIR" || exit
+#In the middle of this is where the filtering can be done with awk, just not sure how to do it...
+cat var/log/* > failed_login_data.txt
+
