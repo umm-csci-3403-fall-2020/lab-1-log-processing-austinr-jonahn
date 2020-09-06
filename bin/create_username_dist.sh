@@ -15,3 +15,5 @@ uniq -c | \
 awk '{ print "data.addRow([\x27"$1"\x27,", $2 "]);" }' > tempFile.txt
 
 #Need to hand tempFile.txt to wrap_contents.sh
+
+./wrap_contents.sh tempFile.txt names namesFile.txt
