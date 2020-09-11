@@ -5,16 +5,16 @@ DIR="$1"
 curDir=$(pwd)
 cd "$DIR" || exit
 
-awk '{ print $5 }' failed_login_data.txt > ip.txt | \
+awk '{ print $5 }' failed_login_data.txt | \
 
 sort | \
 
+#join does not work at all currently
+join  ../../etc/country_IP_map.txt - | \
+
 uniq -c | \
 
-#join does not work at all currently
-join  <(sort ../../etc/country_IP_map.txt) "$1"
-
-awk '{ print "data.addRow([\x27"$1"\x27,", $1 "]);" }' > tempFile.txt
+awk '{ print "data.addRow([\x27"$3"\x27,", $1 "]);" }' > tempFile.txt
 
 #Need to hand tempFile.txt to wrap_contents.sh
 
