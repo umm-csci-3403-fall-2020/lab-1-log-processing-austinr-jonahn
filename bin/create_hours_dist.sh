@@ -17,4 +17,4 @@ awk '{ print "data.addRow([\x27"$2"\x27,", $1 "]);" }' > tempFile.txt
 
 cd ..
 
-"$curDir"/bin/wrap_contents.sh "$DIR"/tempFile.txt html_components/hours_dist "$DIR"/hoursFile.txt
+"$curDir"/bin/wrap_contents.sh "$DIR"/tempFile.txt html_components/hours_dist "$DIR"/hours_dist.html
