@@ -5,18 +5,19 @@ DIR="$1"
 curDir=$(pwd)
 cd "$DIR" || exit
 
-awk '{ print $5 }' failed_login_data.txt | \
-
-sort | \
-
-join  ../../etc/country_IP_map.txt - | \
-
-uniq -c | \
-
-awk '{ print "data.addRow([\x27"$3"\x27,", $1 "]);" }' > tempFile.txt
+#Extracting data from failed_login_data and placing it in a temporary file in the main dir
+cat ./*/failed_login_data.txt | awk '{print $5}'| sort > "$curDir"/temp.txt
+#Combing tge temp file with an ip map file to get the desired output
+join  "$curDir"/temp.txt "$curDir"/etc/country_IP_map.txt  | awk '{print $2}' | sort | uniq -c | awk '{ print "data.addRow([\x27"$2"\x27, "$1"]);" }' > tempFile.txt
 
 #Need to hand tempFile.txt to wrap_contents.sh
 
-cd ..
+cd "$curDir" || exit
 
-"$curDir"/bin/wrap_contents.sh "$DIR"/tempFile.txt html_components/country_dist "$DIR"/country_dist.html
+./bin/wrap_contents.sh \
+       "$DIR"/tempFile.txt \
+       html_components/country_dist \
+       "$DIR"/country_dist.html
+
+rm "$DIR"/tempFile.txt
+rm "$curDir"/temp.txt
