@@ -14,7 +14,7 @@ cd "$curDir" || exit
 ./bin/wrap_contents.sh \
         "$DIR"/tempHours.txt \
        	html_components/hours_dist \
-	"$DIR"/hours_dist.html
+		"$DIR"/hours_dist.html
 
 ### Remove Files                                                            
 rm "$DIR"/tempHours.txt
