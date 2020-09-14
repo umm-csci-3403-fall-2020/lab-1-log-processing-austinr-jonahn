@@ -3,7 +3,7 @@
 
 ##Constant##
 DIR="$1"
-
+curDir=$(pwd)
 ##MAIN##
 #Merging all of the files together
 cd "$DIR" || exit
@@ -13,5 +13,6 @@ cd "$DIR" || exit
 cat var/log/* | awk -F "[: ]+" '/Failed password for invalid user/{print $1, $2, $3, $(NF-5), $(NF-3)}' > failed_login_data.txt
 #valid user
 cat var/log/* | awk -F "[: ]+" '/Failed password for/{print $1, $2, $3, $(NF-5), $(NF-3)}' > failed_login_data.txt
+cd "$curDir" || exit
 #End of script
 #Also fun fact lots of time could have been saved if i spelt password correctly

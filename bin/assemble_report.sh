@@ -6,11 +6,12 @@ curDir=$(pwd)
 cd "$DIR" || exit
 
 #Combining files
-cat country_dist.html hours_dist.html username_dist.html > assemble_tempFile.txt
+cat country_dist.html hours_dist.html username_dist.html > failed_login_summary.txt
 
 cd "$curDir" || exit
 
 ./bin/wrap_contents.sh \
-       "$DIR"/assemble_tempFile.txt \
+       "$DIR"/failed_login_summary.txt \
        html_components/summary_plots \
        "$DIR"/failed_login_summary.html
+

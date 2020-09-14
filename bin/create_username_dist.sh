@@ -12,7 +12,9 @@ cat ./*/failed_login_data.txt | awk ' {print $4} '| sort | uniq -c |\
 # Using wrap contentssh to add footer and header to usernames
 cd "$CurDir" || exit
 ./bin/wrap_contents.sh \
-		"$DIR"/tempUserName.txt \
+	"$DIR"/tempUserName.txt \
        	html_components/username_dist \
-		"$DIR"/username_dist.html
+	"$DIR"/username_dist.html
+rm "$DIR"/tempUserName.txt
+
 

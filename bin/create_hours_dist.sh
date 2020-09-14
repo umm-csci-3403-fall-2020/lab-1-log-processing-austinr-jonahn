@@ -14,4 +14,5 @@ cd "$CurDir" || exit
 ./bin/wrap_contents.sh \
         "$DIR"/tempHours.txt \
        	html_components/hours_dist \
-		"$DIR"/hours_dist.html
+	"$DIR"/hours_dist.html
+rm "$DIR"/tempHours.txt
