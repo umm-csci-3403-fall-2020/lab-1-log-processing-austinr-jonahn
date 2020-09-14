@@ -16,3 +16,8 @@ for input; do input2=${input%_secure.tgz}
 
 ./bin/assemble_report.sh scratch
 
+rm scratch/assemble_tempFile.txt
+rm scratch/tempFile.txt
+rm scratch/tempHours.txt
+rm scratch/tempUserName.txt
+

@@ -16,5 +16,3 @@ cd "$CurDir" || exit
        	html_components/username_dist \
 		"$DIR"/username_dist.html
 
-# remove temp file
-#tempUserName.txt

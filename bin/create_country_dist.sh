@@ -19,5 +19,4 @@ cd "$curDir" || exit
        html_components/country_dist \
        "$DIR"/country_dist.html
 
-#rm tempFile.txt
 rm temp.txt

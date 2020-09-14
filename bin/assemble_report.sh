@@ -14,5 +14,3 @@ cd "$curDir" || exit
        "$DIR"/assemble_tempFile.txt \
        html_components/summary_plots \
        "$DIR"/failed_login_summary.html
-
-#rm assemble_tempFile.txt

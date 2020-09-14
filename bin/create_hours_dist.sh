@@ -15,6 +15,3 @@ cd "$CurDir" || exit
         "$DIR"/tempHours.txt \
        	html_components/hours_dist \
 		"$DIR"/hours_dist.html
-
-### Remove Files                                                            
-#tempHours.txt
