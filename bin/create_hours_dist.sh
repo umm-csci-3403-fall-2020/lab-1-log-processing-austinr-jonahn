@@ -6,7 +6,7 @@ CurDir=$(pwd)
 
 ###Extracting and sorting
 cd "$DIR" || exit
-cat ./*/failed_login_data.txt | awk ' {print $3} ' | sort |\
+cat */failed_login_data.txt | awk ' {print $3} ' | sort |\
        	uniq -c | awk ' { print "data.addRow([\x27"$2"\x27, "$1"]);"}' > tempHours.txt
 
 ### Using wrap contentssh to add footer and header to usernames
