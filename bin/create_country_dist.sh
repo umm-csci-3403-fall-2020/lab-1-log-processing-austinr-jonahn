@@ -6,7 +6,7 @@ curDir=$(pwd)
 cd "$DIR" || exit
 
 #Extracting data from failed_login_data and placing it in a temporary file in the main dir
-cat ./*/failed_login_data.txt | awk '{print $5}'| sort > "$curDir"/temp.txt
+cat ./scratch/*/failed_login_data.txt | awk '{print $5}'| sort > "$curDir"/temp.txt
 #Combing tge temp file with an ip map file to get the desired output
 join  "$curDir"/temp.txt "$curDir"/etc/country_IP_map.txt  | awk '{print $2}' | sort | uniq -c | awk '{ print "data.addRow([\x27"$2"\x27, "$1"]);" }' > tempFile.txt
 
@@ -19,5 +19,5 @@ cd "$curDir" || exit
        html_components/country_dist \
        "$DIR"/country_dist.html
 
-rm "$DIR"/tempFile.txt
-rm "$curDir"/temp.txt
+rm tempFile.txt
+rm temp.txt
