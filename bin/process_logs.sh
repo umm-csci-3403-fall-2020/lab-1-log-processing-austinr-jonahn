@@ -4,24 +4,23 @@
 #mkdir scratch
 
 CurDir=$(pwd)
+scratch=$(mktemp -d)
+for input in "$@" 
+do 
+	input2=$(basename "$input" .tgz)
+             mkdir  "$scratch"/"$input2"
+             tar -xvf "$input" -C "$scratch"/"$input2"
+             ./bin/process_client_logs.sh "$scratch"/"$input2"; done
 
-for input; do input2=${input%_secure.tgz}
-             mkdir -p scratch/"$input2"
-             tar -xzf log_files/"$input" -C scratch/"$input2"
-             ./bin/process_client_logs.sh scratch/"$input2"; done
+./bin/create_username_dist.sh "$scratch"
 
-./bin/create_username_dist.sh scratch
+./bin/create_country_dist.sh "$scratch"
 
-./bin/create_country_dist.sh scratch
+./bin/create_hours_dist.sh "$scratch"
 
-./bin/create_hours_dist.sh scratch
+./bin/assemble_report.sh "$scratch"
 
-./bin/assemble_report.sh scratch
+mv "$scratch"/failed_login_summary.html "$CurDir"
 
-mv scratch/failed_login_summary.html "$CurDir"
-
-rm scratch/assemble_tempFile.txt
-rm scratch/tempFile.txt
-rm scratch/tempHours.txt
-rm scratch/tempUserName.txt
+rm -r "$scratch"
 
