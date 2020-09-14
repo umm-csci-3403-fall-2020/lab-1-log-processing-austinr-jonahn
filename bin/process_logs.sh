@@ -12,4 +12,7 @@ for input; do input2=${input%_secure.tgz}
 
 ./bin/create_country_dist.sh scratch
 
+./bin/create_hours_dist.sh scratch
+
 ./bin/assemble_report.sh scratch
+
