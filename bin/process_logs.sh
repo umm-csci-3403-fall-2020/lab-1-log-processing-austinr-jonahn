@@ -8,8 +8,8 @@ for input; do input2=${input%_secure.tgz}
              tar -xzvf log_files/"$input" -C scratch/"$input2"
              ./bin/process_client_logs.sh scratch/"$input2"; done
 
-./bin/create_username_dist.sh 
+./bin/create_username_dist.sh scratch
 
-./bin/create_country_dist.sh
+./bin/create_country_dist.sh scratch
 
-./bin/assemble_report.sh
+./bin/assemble_report.sh scratch
